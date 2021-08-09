@@ -65,7 +65,7 @@
       <recent name="com.Java.library.excption" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="ArrayListTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.Java.task10301002.ArrayListTest" />
       <module name="JavaLearn" />
@@ -144,8 +144,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.LinkedListTest" />
         <item itemvalue="Application.Compare" />
         <item itemvalue="Application.ArrayListTest" />
