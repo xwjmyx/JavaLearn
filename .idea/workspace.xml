@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9be09257-1177-412f-831d-e5fc17610552" name="Default Changelist" comment="" />
+    <list default="true" id="9be09257-1177-412f-831d-e5fc17610552" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Java/library/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Java/library/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Java/library/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Java/library/dao/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Java/library/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Java/library/test/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Java/library/view/BookView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Java/library/view/BookView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +22,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -24,15 +34,17 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1vcXmHpdXII168MQHtJsryPHJs6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../BaiduNetdiskDownload/librarysystem" />
+    <property name="last_opened_file_path" value="D:/Java" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -119,13 +131,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.LinkedListTest" />
         <item itemvalue="Application.Compare" />
         <item itemvalue="Application.ArrayListTest" />
-        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -156,12 +179,26 @@
       <workItem from="1628070329113" duration="5271000" />
       <workItem from="1628130397686" duration="17168000" />
       <workItem from="1628231942564" duration="3058000" />
-      <workItem from="1628236092658" duration="966000" />
+      <workItem from="1628236092658" duration="11778000" />
+      <workItem from="1628328744373" duration="10636000" />
+      <workItem from="1628476695710" duration="1706000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -170,11 +207,6 @@
           <properties class="java.lang.ClassCastException" package="java.lang" />
           <option name="timeStamp" value="6" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/Java/task10302/controller/ExpressController.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

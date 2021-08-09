@@ -1,6 +1,7 @@
 package com.Java.library.view;
 
 import com.Java.library.dao.BookDao;
+import com.Java.library.entity.Book;
 import com.Java.library.excption.OutNumberBoundExcption;
 
 import java.text.ParseException;
@@ -14,22 +15,14 @@ import java.util.*;
 public class BookView {
 
     Scanner input = new Scanner(System.in);
+    Book book = new Book();
     BookDao bookDao = new BookDao();
-    String name;
     String text;
-    int num;
-
-    public void welcome() {
-        System.out.println("欢迎使用图书管理系统！");
-    }
+    int num = -1;
 
     public void bye() {
         System.out.println("欢迎下次继续使用。");
         System.exit(0);
-    }
-
-    public void success() {
-        System.out.println("操作成功！");
     }
 
     public void error(int num) {
@@ -43,9 +36,8 @@ public class BookView {
         }
     }
 
-    /*//用户是否登录成功
-    public void ifLoginIn() {
-        welcome();
+    //用户是否登录成功
+    public boolean ifLoginIn() {
         for (int i = 3; i > 0;) {
             System.out.println("请输入用户名：");
             String userName = input.nextLine();
@@ -53,18 +45,17 @@ public class BookView {
             String passWord = input.nextLine();
             if (userName.equals("admin") && passWord.equals("123456")) {
                 System.out.println("欢迎登录，" + userName);
-                menu();
-            } else if (--i == 0) {
-                bye();
-            } else {
+                return true;
+            } else if (--i != 0) {
                 System.err.println("用户名或密码错误，请重新输入！");
                 System.err.println("还有" + i + "次机会。");
             }
         }
-    }*/
+        return false;
+    }
 
     //主菜单
-    public void menu() {
+    public int adminMenu() {
         while (true) {
             System.out.println("请选择操作序号：");
             System.out.println("1、新增图书");
@@ -73,54 +64,23 @@ public class BookView {
             System.out.println("4、根据图书名模糊查找");
             System.out.println("5、查看所有图书");
             System.out.println("0、退出");
-            text = input.nextLine();
+            this.text = input.nextLine();
             int begin = 0;
             int end = 5;
             try {
-                num = validate(text, begin, end);
+                num = validate(this.text, begin, end);
+                break;
             } catch (NumberFormatException e) {
                 System.err.println(e.getMessage());
             } catch (OutNumberBoundExcption e) {
                 System.err.println(e.getMessage());
             }
-            switch (num) {
-                case 0: {
-                    bye();
-                }
-                case 1: {
-                    try {
-                        addBook();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                }
-                case 2: {
-                    try {
-                        DelBook();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                }
-                case 3: {
-                    updateBook();
-                    break;
-                }
-                case 4: {
-                    fuzzyFindByName();
-                    break;
-                }
-                case 5: {
-                    sortMenu();
-                    break;
-                }
-            }
         }
+        return num;
     }
 
     //排序菜单
-    private void sortMenu() {
+    public int sortMenu() {
         while (true) {
             System.out.println("请选择排序方式：");
             System.out.println("1、不排序");
@@ -133,43 +93,31 @@ public class BookView {
             int end = 4;
             try {
                 num = validate(text, begin, end);
+                break;
             } catch (NumberFormatException e) {
                 System.err.println(e.getMessage());
             } catch (OutNumberBoundExcption e) {
                 System.err.println(e.getMessage());
             }
-            switch (num) {
-                case 0:
-                    return;
-                case 1:
-                    printAll();
-                    break;
-                case 2:
-                case 3:
-                case 4:
-                    sorting(num);
-                    break;
-            }
         }
+        return num;
     }
 
     //新增图书
-    public void addBook() {
+    public Book add() {
         double price = 0;
-        Date date = null;
+        Date date;
         do {
             System.out.println("请输入图书名字：");
-            name = input.nextLine();
+            text = input.nextLine();
             System.out.println("请输入价格：");
             String priceText = input.nextLine();
             try {
                 price = validate(priceText, 0);
             } catch (OutNumberBoundExcption e) {
                 System.err.println(e.getMessage());
-                continue;
             } catch (NumberFormatException e) {
                 System.err.println(e.getMessage());
-                continue;
             }
             System.out.println("请输入出版日期（格式：yyyy-MM-dd）：");
             String time = input.nextLine();
@@ -180,77 +128,52 @@ public class BookView {
                 System.err.println(e.getMessage());
             }
         } while (true);
-        if (bookDao.findByName(name) == null) {
-            bookDao.add(name, price, date);
-            success();
+        if (bookDao.findByName(text) == null) {
+            book = new Book();
+            book.setName(text);
+            book.setPrice(price);
+            book.setPublicDate(date);
+            return book;
         } else {
             error(1);
         }
-        return;
+        return null;
     }
 
     //删除图书
-    public void DelBook() {
+    public String delete() {
         if (ifIsExist()) {
             System.out.println("请输入图书名字：");
-            name = input.nextLine();
-            while (bookDao.findByName(name) == null) {
-                System.err.println("未找到名为" + name + "的书，请重新输入：");
-                name = input.nextLine();
+            text = input.nextLine();
+            while (bookDao.findByName(text) == null) {
+                System.err.println("未找到名为" + text + "的书，请重新输入：");
+                text = input.nextLine();
             }
-            bookDao.del(name);
-            success();
-            return;
+            return text;
         }
+        return null;
     }
 
-    //修改图书
-    public void updateBook() {
+    public String update() {
         if (ifIsExist()) {
             System.out.println("请输入图书名字：");
-            name = input.nextLine();
-            while (bookDao.findByName(name) == null) {
-                System.err.println("未找到名为" + name + "的书，请重新输入：");
-                name = input.nextLine();
+            text = input.nextLine();
+            while (bookDao.findByName(text) == null) {
+                System.err.println("未找到名为" + text + "的书，请重新输入：");
+                text = input.nextLine();
             }
-            bookDao.del(name);
-            addBook();
+            return text;
         }
+        return null;
     }
 
     //根据名字模糊查找
-    public void fuzzyFindByName() {
+    public String fuzzyFindByName() {
         if (ifIsExist()) {
             System.out.println("请输入需要查找的内容：");
-            text = input.nextLine();
-            bookDao.matchName(text);
-            return;
+            this.text = input.nextLine();
         }
-    }
-
-    //打印所有图书
-    public void printAll() {
-        if (ifIsExist()) {
-            bookDao.printAll();
-            return;
-        }
-    }
-
-    //排序打印所有图书
-    private void sorting(int num) {
-        if (ifIsExist()) {
-            switch (num) {
-                case 2:
-                    bookDao.compareByPriceDesc();
-                    break;
-                case 3:
-                    bookDao.compareByPriceAsc();
-                    break;
-                case 4:
-                    bookDao.compareByDateDesc();
-                    break;
-            }
-        }
+        return this.text;
     }
 
     public boolean ifIsExist() {

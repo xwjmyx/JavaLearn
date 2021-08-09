@@ -21,12 +21,9 @@ public class BookDao {
     }
 
     //添加
-    public void add(String name, double price, Date date) {
-        book = new Book();
-        book.setName(name);
-        book.setPrice(price);
-        book.setPublicDate(date);
+    public void add(Book book) {
         bookList.add(book);
+        success();
     }
 
     //删除
@@ -34,6 +31,7 @@ public class BookDao {
         for (int i = 0; i < bookList.size(); i++) {
              if (bookList.get(i).getName().equals(name)) {
                  bookList.remove(i);
+                 success();
                  break;
              }
         }
@@ -50,9 +48,9 @@ public class BookDao {
     }
 
     //匹配名字
-    public void matchName(String text) {
+    public void matchName(String name) {
         boolean find = false;
-        Pattern pattern = Pattern.compile(text);
+        Pattern pattern = Pattern.compile(name);
         Iterator<Book> bookIterator = bookList.iterator();
         while (bookIterator.hasNext()) {
             book = bookIterator.next();
@@ -63,7 +61,7 @@ public class BookDao {
             }
         }
         if (!find) {
-            System.err.println("未找到书名含有" + "\"" + text + "\"" + "的图书。");
+            System.err.println("未找到书名含有" + "\"" + name + "\"" + "的图书。");
         }
     }
 
@@ -135,5 +133,9 @@ public class BookDao {
             } else
                 return -1;
         }
+    }
+
+    public void success() {
+        System.out.println("操作成功！");
     }
 }

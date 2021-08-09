@@ -1,7 +1,6 @@
 package com.Java.library.test;
 
 import com.Java.library.controller.BookController;
-import com.Java.library.view.BookView;
 
 /**
  * Author：CY
@@ -12,6 +11,5 @@ public class Test {
         BookController bookController = new BookController();
 
         bookController.login();
-
     }
 }
